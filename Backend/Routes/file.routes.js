@@ -58,6 +58,8 @@ fileRouter.post(
 
         const formattedTime = currentTime.toLocaleString('en-IN', options);
 
+        const formattedTimeWithoutTimeZone = formattedTime.replace(/\sGMT[+-]\d{4}\s/, '');
+
           
           
           
@@ -66,7 +68,7 @@ fileRouter.post(
           // Add file metadata to MongoDB
           const metadata = new Filedata({
             filename: imageurlS3,
-            uploadDate: formattedTime,
+            uploadDate: formattedTimeWithoutTimeZone,
             user: userId,
           });
           await metadata.save();
