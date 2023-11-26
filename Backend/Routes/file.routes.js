@@ -48,12 +48,12 @@ fileRouter.post('/upload', upload.single('file'),auth,RoleBase(["user", "admin"]
             });
             await metadata.save();
 
-            res.status(200).send('File uploaded successfully!');
+            res.status(201).send('File uploaded successfully!');
         
             // res.json({ message: 'File uploaded successfully!' });
           } catch (error) {
             console.error('Error uploading file:', error);
-            res.status(500).json({ error: 'Error uploading file.' });
+            res.status(500).send({ error: 'Error uploading file.' });
           }
         }
       });
@@ -62,13 +62,18 @@ fileRouter.post('/upload', upload.single('file'),auth,RoleBase(["user", "admin"]
 
 
 fileRouter.get('/files',auth,RoleBase(["admin"]), async (req, res) => {
-  // Retrieve the list of uploaded files from MongoDB
+  // getting the list of uploaded files from MongoDB
   try {
     const files = await Filedata.find();
-    res.json(files);
+
+    let PopulatedFiles=await Filedata.find({ user: files.user }).populate("user");
+    // res.json(files);
+    
+    res.status(200).send(PopulatedFiles);
+
   } catch (error) {
     console.error('Error fetching files:', error);
-    res.status(500).json({ error: 'Error fetching files.' });
+    res.status(500).send({ error: 'Error fetching files.' });
   }
 });
 
@@ -80,10 +85,12 @@ fileRouter.get('/files/:userId',auth,RoleBase(["user"]), async (req, res) => {
   
       // Retrieve the list of uploaded files from MongoDB for a specific user
       const files = await Filedata.find({ user: userId }).populate("user");
-      res.json(files);
+     
+     res.status(200).send(files);
+
     } catch (error) {
       
-      res.status(500).json({ error: 'Error fetching files.' });
+      res.status(500).send({ error: 'Error fetching files.' });
     }
   });
   fileRouter.delete('/delete/:filename',auth,RoleBase(["user", "admin"]), async (req, res) => {
@@ -110,12 +117,15 @@ fileRouter.get('/files/:userId',auth,RoleBase(["user"]), async (req, res) => {
         console.log('"1File deleted successfully!');
           // Removing file metadata from MongoDB
       await Filedata.deleteOne({ filename: filename });
-        res.json({ message: 'File deleted successfully!' });
+        
+       
+       res.status(204).send({ message: 'File deleted successfully!' });
+
       }
       
     } catch (error) {
       console.error('Error deleting file:', error);
-      res.status(500).json({ error: 'Error deleting file.' });
+      res.status(500).send({ error: 'Error deleting file.' });
     }
   });
 

@@ -23,7 +23,7 @@ userRouter.post("/register", async (req, res) => {
         bcrypt.hash(password, 5, async (err, hash) => {
             const user = new userModel({ name, email,mobile_No, password: hash,  age,role})
             await user.save()
-            res.status(200).send({ "msg": "registration done succesfully" })
+            res.status(201).send({ "msg": "registration done succesfully" })
         })
 
     } catch (err) {
@@ -38,7 +38,7 @@ userRouter.post("/login", async (req, res) => {
         if (user) {
             bcrypt.compare(password, user.password, (err, result) => {
                 if (result) {
-                    res.status(200).send({ "msg": "login succesfully","name":user.name,user, "token": jwt.sign({ "userID":user._id,role:user.role }, process.env.JWT_Secret, { expiresIn: '3h' }) })
+                    res.status(201).send({ "msg": "login succesfully","name":user.name,user, "token": jwt.sign({ "userID":user._id,role:user.role }, process.env.JWT_Secret, { expiresIn: '3h' }) })
                 } else {
                     res.status(400).send({ "msg": "login failed" })
                 }

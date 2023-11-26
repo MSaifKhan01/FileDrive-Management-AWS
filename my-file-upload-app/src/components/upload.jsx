@@ -39,6 +39,7 @@ const FileUpload = () => {
           // Updating the file list after a successful upload
           console.log("file Uploaded");
           // Swal.fire(responseText)
+          console.log(response)
 
           Swal.fire({
             title: responseText,
@@ -125,6 +126,7 @@ const FileUpload = () => {
 
       if (Array.isArray(files)) {
         setFileList(files);
+        console.log("hfhjj",files)
       } else {
         console.error("Invalid response format. Expected an array:", files);
       }
