@@ -57,6 +57,9 @@ fileRouter.post(
           };
           
           const indianDateAndTime = new Date().toLocaleString('en-IN', options);
+
+          console.log(indianDateAndTime)
+          
           
           
           
