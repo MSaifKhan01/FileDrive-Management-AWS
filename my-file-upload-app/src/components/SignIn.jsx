@@ -66,6 +66,8 @@ const Login = () => {
       <input type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
       <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
       <button onClick={handleLogin} className='LognBtn'>Login</button>
+
+      <Link to="/Register" className='linkForRgstr'> Create an Account </Link>
     </div>
   );
 };

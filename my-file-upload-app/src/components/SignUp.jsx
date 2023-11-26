@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '../FileCSS/Register.css'; 
-import { useNavigate } from "react-router-dom";
+import {Link, useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
 const Register = () => {
   const [name, setName] = useState('');
@@ -8,7 +8,7 @@ const Register = () => {
   const [mobileNo, setMobileNo] = useState('');
   const [password, setPassword] = useState('');
   const [age, setAge] = useState('');
-  // const [role, setRole] = useState('');
+  
 
   const navigate = useNavigate();
 
@@ -51,8 +51,9 @@ const Register = () => {
       <input type="text" placeholder="Mobile No" value={mobileNo} onChange={(e) => setMobileNo(e.target.value)} />
       <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
       <input type="text" placeholder="Age" value={age} onChange={(e) => setAge(e.target.value)} />
-      {/* <input type="text" placeholder="Role" value={role} onChange={(e) => setRole(e.target.value)} /> */}
+   
       <button onClick={handleRegister} className='rgstrBtn'>Register</button>
+      <Link to="/Login" className='linkForLogin'> Log in Here</Link>
     </div>
   );
 };

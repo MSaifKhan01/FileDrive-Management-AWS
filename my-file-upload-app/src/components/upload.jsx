@@ -163,8 +163,8 @@ const FileUpload = () => {
       <table>
         <thead>
           <tr>
-            <th>File Name</th>
-            <th>User Information</th>
+            <th>File Image OR Name</th>
+            {userRole === "admin" &&<th>User Information</th>}
             <th>Actions</th>
           </tr>
         </thead>
@@ -183,7 +183,7 @@ const FileUpload = () => {
                   file.filename
                 )}
               </td>
-              <td>
+              {userRole === "admin" &&<td>
                 <div>
                   <p>Name: {file.user ? file.user.name : "Unknown User"}</p>
                   <p>Role: {file.user ? file.user.role : "Unknown Role"}</p>
@@ -194,7 +194,7 @@ const FileUpload = () => {
                   <p>Email: {file.user ? file.user.email : "Unknown Email"}</p>
                   <p>Upload Date: {file.uploadDate}</p>
                 </div>
-              </td>
+              </td>}
               <td>
                 <button>
                   <div>

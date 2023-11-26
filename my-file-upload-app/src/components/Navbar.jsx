@@ -15,7 +15,7 @@ const Navbar = () => {
     <nav>
       <div id="logo">
         <img
-          src="https://img.freepik.com/free-photo/layout-icon-front-side_187299-39492.jpg?w=740&t=st=1699385274~exp=1699385874~hmac=ebe3b8cd1416f5b2bd53eb58cf1bb35a01d008df67e7cebc1b235dfe4859f8bf"
+          src="https://img.freepik.com/free-vector/three-translucent-letters_1025-765.jpg?w=740&t=st=1701018283~exp=1701018883~hmac=9689d28f2725af3d65ca7db091328ee58d739a2349625ed45a696df1ee374313"
           alt=""
         />
       </div>
