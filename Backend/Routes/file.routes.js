@@ -56,7 +56,6 @@ fileRouter.post(
           };
 
           const formattedTime = currentTime.toLocaleString("en-IN", options);
-          const formattedDateTimeWithComma= formattedTime.replace(' ', ', ');
 
           // Add file metadata to MongoDB
           const metadata = new Filedata({
