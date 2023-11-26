@@ -44,21 +44,20 @@ fileRouter.post(
           const userId = req.body.user;
 
 
-          // for time and Date
-          const options = {
-            timeZone: 'Asia/Kolkata', // Seting the time zone to Indian Standard Time
-            hour12: false, // Using 24-hour clock
-            day: '2-digit', // Displaying day as two digits
-            month: '2-digit', // Displaying month as two digits
-            year: 'numeric', // Displaying year in numeric format
-            hour: '2-digit', // Displaying hour as two digits
-            minute: '2-digit', // Displaying minute as two digits
-            second: '2-digit', // Displaying second as two digits
-          };
-          
-          const indianDateAndTime = new Date().toLocaleString('en-IN', options);
+        // Date and time in indian formate
+        const currentTime = new Date();
+        const options = {
+            year: 'numeric',
+            month: 'numeric',
+            day: 'numeric',
+            hour: 'numeric',
+            minute: 'numeric',
+            second: 'numeric',
+            timeZone: 'Asia/Kolkata' // Indian time zone
+        };
 
-          console.log(indianDateAndTime)
+        const formattedTime = currentTime.toLocaleString('en-IN', options);
+
           
           
           
@@ -67,7 +66,7 @@ fileRouter.post(
           // Add file metadata to MongoDB
           const metadata = new Filedata({
             filename: imageurlS3,
-            uploadDate: indianDateAndTime,
+            uploadDate: formattedTime,
             user: userId,
           });
           await metadata.save();
