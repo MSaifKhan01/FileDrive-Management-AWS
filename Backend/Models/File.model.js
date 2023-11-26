@@ -2,7 +2,7 @@ const mongoose=require("mongoose")
 
 const fileSchema= mongoose.Schema({
     filename: String,
-    uploadDate: Date,
+    uploadDate: String,
     user:{ type: mongoose.Schema.Types.ObjectId, ref: "user" },
   })
 // Mongoose model for file metadata
