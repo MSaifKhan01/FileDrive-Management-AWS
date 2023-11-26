@@ -60,7 +60,7 @@ fileRouter.post(
           // Add file metadata to MongoDB
           const metadata = new Filedata({
             filename: imageurlS3,
-            uploadDate: formattedDateTimeWithComma,
+            uploadDate: formattedTime,
             user: userId,
           });
           await metadata.save();

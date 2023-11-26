@@ -8,7 +8,7 @@ const Register = () => {
   const [mobileNo, setMobileNo] = useState('');
   const [password, setPassword] = useState('');
   const [age, setAge] = useState('');
-  const [role, setRole] = useState('');
+  // const [role, setRole] = useState('');
 
   const navigate = useNavigate();
 
@@ -24,7 +24,7 @@ const Register = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ name, email, mobile_No: mobileNo, password, age, role }),
+        body: JSON.stringify({ name, email, mobile_No: mobileNo, password, age }),
       });
 
       const result = await response.json();
@@ -51,7 +51,7 @@ const Register = () => {
       <input type="text" placeholder="Mobile No" value={mobileNo} onChange={(e) => setMobileNo(e.target.value)} />
       <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
       <input type="text" placeholder="Age" value={age} onChange={(e) => setAge(e.target.value)} />
-      <input type="text" placeholder="Role" value={role} onChange={(e) => setRole(e.target.value)} />
+      {/* <input type="text" placeholder="Role" value={role} onChange={(e) => setRole(e.target.value)} /> */}
       <button onClick={handleRegister} className='rgstrBtn'>Register</button>
     </div>
   );
