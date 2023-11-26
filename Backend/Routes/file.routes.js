@@ -66,9 +66,11 @@ fileRouter.get('/files',auth,RoleBase(["admin"]), async (req, res) => {
   try {
     const files = await Filedata.find();
 
-    let PopulatedFiles=await Filedata.find({ user: files.user }).populate("user");
-    // res.json(files);
-    
+    // console.log(files)
+
+    let PopulatedFiles=await Filedata.populate(files, { path: "user" });
+
+   
     res.status(200).send(PopulatedFiles);
 
   } catch (error) {
