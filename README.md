@@ -2,8 +2,10 @@
 
 FileDrive-Management
 
-**Frontend Deployed Link:** https://filedrive-management.netlify.app/
-**Backend Deployed Link:** https://filedrive-management.onrender.com
+
+**Frontend**: [FileDrive-Management App](https://filedrive-management.netlify.app/)  
+**Backend**: [FileDrive-Management API](https://filedrive-management.onrender.com)
+
 
 
 **Note:** The frontend is deployed on AWS EC2, and AWS S3 is utilized as a storage bucket for documents. The EC2 instance's deployment link is not provided due to fear of billing; however, the frontend is accessible through the provided Netlify link: [Frontend Deployed Link](https://filedrive-management.netlify.app/).
@@ -53,7 +55,7 @@ List of dependencies used for this backend.
 - Mongoose
 - Bcrypt
 - Jsonwebtoken
-- ...
+- cors
 
 ### Setting Up
 
@@ -90,7 +92,7 @@ List of dependencies used for this frontend.
 - React
 - React Router
 - SweetAlert2
-- ...
+
 
 ### Setting Up (frontend)
 
