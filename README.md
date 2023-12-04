@@ -3,7 +3,7 @@
 FileDrive-Management
 
 
-**Frontend**: [FileDrive-Management App](https://filedrive-management.netlify.app/)  
+**Frontend**: [FileDrive-Management App](https://filedrive2.netlify.app/)  
 **Backend**: [FileDrive-Management API](https://filedrive-management.onrender.com)
 
 

@@ -11,12 +11,7 @@ const fileRouter = express.Router();
 const bucketName = process.env.S3bucketName;
 const upload = multer({ dest: "uploads/" });
 
-fileRouter.post(
-  "/upload",
-  upload.single("file"),
-  auth,
-  RoleBase(["user", "admin"]),
-  async (req, res) => {
+fileRouter.post("/upload",upload.single("file"),auth, RoleBase(["user", "admin"]),async (req, res) => {
     const { file } = req;
 
     // Reading the file from the local filesystem
@@ -105,11 +100,7 @@ fileRouter.get("/files/:userId", auth, RoleBase(["user"]), async (req, res) => {
     res.status(500).send({ error: "Error fetching files." });
   }
 });
-fileRouter.delete(
-  "/delete/:filename",
-  auth,
-  RoleBase(["user", "admin"]),
-  async (req, res) => {
+fileRouter.delete("/delete/:filename",auth,RoleBase(["user", "admin"]),async (req, res) => {
     const filename = req.params.filename;
     console.log("Deleting file:", filename);
 
