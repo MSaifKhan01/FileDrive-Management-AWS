@@ -28,7 +28,7 @@ const About = () => {
         </p>
         <p>
         <a href="https://www.linkedin.com/in/mohd-saif-khan-3b4979202/">
-                <span className="screen-reader-text">LinkedIn</span>
+                <span className="screen-reader-text"> You Can Contact Me On LinkedIn</span>
               </a>
         </p>
       </div>

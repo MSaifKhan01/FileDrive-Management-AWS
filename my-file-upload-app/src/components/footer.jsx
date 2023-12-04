@@ -4,25 +4,29 @@ const Footer = () => {
   return (
     <footer className="site-footer">
       <div className="brand footer-brand">
-        <a href="#">
+        <a href="/">
           <img
             className="header-logo-image"
             src="https://img.freepik.com/free-vector/three-translucent-letters_1025-765.jpg?w=740&t=st=1701695357~exp=1701695957~hmac=28f87ea22493e73bb0e1ece2149c52c72ac796d9f07d46c4d79c7c48de01e27a"
             alt="Your App Logo"
           />
+          <h5>FileDrive</h5>
         </a>
+        
       </div>
+      <vr></vr>
+      <hr />
       <div className="container">
         <div className="site-footer-inner">
           <ul className="footer-links list-reset">
             <li>
-              <a href="#">Contact</a>
+              <a href="/">Contact</a>
             </li>
             <li>
-              <a href="#">About us</a>
+              <a href="/About">About us</a>
             </li>
             <li>
-              <a href="#">Support</a>
+              <a href="/">Support</a>
             </li>
           </ul>
 
@@ -37,7 +41,13 @@ const Footer = () => {
             &copy; 2023 FileDrive, all rights reserved
           </div>
         </div>
+
+      <div>
+        
       </div>
+      </div>
+      <vr className="vr2"></vr>
+      <hr className="vr2" />
     </footer>
   );
 };
