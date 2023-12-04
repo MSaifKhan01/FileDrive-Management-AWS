@@ -29,7 +29,10 @@ const Navbar = () => {
         </li>
 
         <li>
-          <Link to="/Files">File Management</Link>
+          <Link to="/Files">File Drive </Link>
+        </li>
+        <li>
+          <Link to="/About">About</Link>
         </li>
 
         <li>
@@ -53,6 +56,10 @@ const Navbar = () => {
 
         <li>
           <Link to="/Login">Login</Link>
+        </li>
+
+        <li>
+          <Link to="/About">About</Link>
         </li>
       </ul>
 }

@@ -1,0 +1,37 @@
+.about-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .about-image {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  
+  .about-text {
+    max-width: 600px;
+  }
+  
+ 
+  
+  @media screen and (max-width: 768px) {
+    .about-container {
+      padding: 10px;
+    }
+  
+    .about-text {
+      font-size: 14px;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .about-text {
+      font-size: 12px;
+    }
+  }
+  
