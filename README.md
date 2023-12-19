@@ -64,6 +64,17 @@ List of dependencies used for this backend.
 3. Configure environment variables in a `.env` file.
 4. Run the server using `npm run server`.
 
+
+
+
+## For User Interface
+<img width="532" alt="user_Dashboard" src="https://github.com/MSaifKhan01/FileDrive-Management-AWS/assets/119418918/20bcad4c-6327-4a32-b748-7a009c71084a">
+
+
+## For Admin Interface
+<img width="506" alt="admin_Dashboard" src="https://github.com/MSaifKhan01/FileDrive-Management-AWS/assets/119418918/b3372362-d20d-41d2-8dda-c9e1da4f76c3">
+
+
 ### API Endpoints
 
 - **POST /user/register**: Register a new user.
