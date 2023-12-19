@@ -284,7 +284,7 @@ const FileUpload = () => {
                 <button className="deleteBtn" onClick={() => handleDelete(file.filename)}>
                   Delete
                 </button>
-                <button className="updateBtn" onClick={() => handleUpdate(file.filename)}>Update File</button>
+                <button className="updateBtn" onClick={() => handleUpdate(file.filename)}>Change File</button>
               </td>
             </tr>
           ))}
