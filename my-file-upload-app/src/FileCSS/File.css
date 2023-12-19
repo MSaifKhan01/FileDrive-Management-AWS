@@ -78,12 +78,12 @@ width: 20%;
 }
 td img {
   display: block;
-  width: 100%;
+  width: 90%;
   margin: 0 auto; 
   max-width: 100%; 
   height: auto; 
   max-height: 200px; 
-  padding: 20%;
+  padding: 5%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   background-color: #caf0f8;
  
@@ -109,7 +109,7 @@ th {
   }
   td img {
     max-height: 100%; 
-  padding: 20%;
+  padding: 5%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   background-color: #caf0f8;
   }

@@ -3,12 +3,12 @@
 FileDrive-Management
 
 
-**Frontend**: [FileDrive-Management App](https://filedrive2.netlify.app/)  
+**Frontend**: [FileDrive-Management App](https://myfile-drive3.netlify.app/)  
 **Backend**: [FileDrive-Management API](https://filedrive-management.onrender.com)
 
 
 
-**Note:** The frontend is deployed on AWS EC2, and AWS S3 is utilized as a storage bucket for documents. The EC2 instance's deployment link is not provided due to fear of billing; however, the frontend is accessible through the provided Netlify link: [Frontend Deployed Link](https://filedrive-management.netlify.app/).
+**Note:** The frontend is deployed on AWS EC2, and AWS S3 is utilized as a storage bucket for documents. The EC2 instance's deployment link is not provided due to fear of billing; however, the frontend is accessible through the provided Netlify link: [Frontend Deployed Link](https://myfile-drive3.netlify.app/).
 
 
 ## Table of Contents

@@ -255,7 +255,7 @@ const FileUpload = () => {
                   <img
                     src={file.filename}
                     alt={file.filename}
-                    style={{ maxWidth: "100px", maxHeight: "100px" }}
+                    style={{ maxWidth: "300px", maxHeight: "300px" }}
                   />
                 ) : (
                   file.filename
