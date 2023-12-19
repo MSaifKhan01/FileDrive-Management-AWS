@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import '../FileCSS/Login.css'; 
 import Swal from 'sweetalert2';
-// import './Register.css'; 
+
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -11,7 +11,7 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
-      // let BaseUrl=`https://filemanagement-ikvm.onrender.com`
+     
       // let BaseUrl=`http://localhost:3001`
       // this is latest Deploye Link which is below
       let BaseUrl=`https://filedrive-management.onrender.com`

@@ -15,13 +15,16 @@ const FileUpload = () => {
 
     const formData = new FormData(event.target);
     formData.append("user", userID);
-    // let BaseUrl=`https://filemanagement-ikvm.onrender.com`
+   
+  
     // let BaseUrl=`http://localhost:3001`
 
     // this is latest Deploye Link which is below
     let BaseUrl = `https://filedrive-management.onrender.com`;
 
+
     try {
+      console.log("fgc",formData)
       const response = await fetch(`${BaseUrl}/file/upload`, {
         method: "POST",
         headers: {
@@ -48,7 +51,7 @@ const FileUpload = () => {
           updateFileList();
         }
       } else {
-        // Handle non-OK response (e.g., redirect, different content type)
+        
         Swal.fire({
           title: "Something went wrong",
           icon: "error",
@@ -68,8 +71,12 @@ const FileUpload = () => {
   const handleDelete = async (filename) => {
     console.log("hgdhh1", filename);
     console.log(encodeURIComponent(filename));
+    // filename=filename.toString()
+    // console.log(filename)
     try {
-      // let BaseUrl=`https://filemanagement-ikvm.onrender.com`
+      
+      
+     
       // let BaseUrl=`http://localhost:3001`
 
       // this is latest Deploye Link which is below
@@ -85,11 +92,11 @@ const FileUpload = () => {
       );
 
       if (response.ok) {
-        // Update the file list after a successful delete
+        // Updating the file list after a successful delete
 
         updateFileList();
       } else {
-        // Handle non-OK response (e.g., redirect, different content type)
+       
         console.error("Error deleting file. Status:", response.status);
       }
     } catch (error) {
@@ -98,14 +105,85 @@ const FileUpload = () => {
     }
   };
 
+
+  const handleUpdate = async (filename) => {
+    try {
+     
+      // let BaseUrl=`http://localhost:3001`
+  
+      // this is latest Deploye Link which is below
+      let BaseUrl = `https://filedrive-management.onrender.com`;
+  
+      // Open a modal or a form for updating a file
+      Swal.fire({
+        title: 'Update File',
+        html: `<input type="file" id="updateFileInput" name="file">`,
+        showCancelButton: true,
+        confirmButtonText: 'Update',
+        preConfirm: async () => {
+          const updatedFileInput = document.getElementById('updateFileInput');
+          const updatedFile = updatedFileInput.files[0];
+  
+          if (updatedFile) {
+            const formData = new FormData();
+            formData.append('file', updatedFile);
+            formData.append('user', userID);
+  
+            try {
+              const response = await fetch(`${BaseUrl}/file/update/${encodeURIComponent(filename)}`, {
+                method: 'PUT',
+                headers: {
+                  Authorization: localStorage.getItem('token'),
+                },
+                body: formData,
+              });
+  
+              if (response.ok) {
+                const responseText = await response.text();
+                if (responseText === 'File updated successfully!') {
+                  Swal.fire({
+                    title: responseText,
+                    icon: 'success',
+                  });
+                  updateFileList();
+                }
+              } else {
+                Swal.fire({
+                  title: 'Something went wrong',
+                  icon: 'error',
+                });
+                console.error('Error updating file. Status:', response.status);
+              }
+            } catch (error) {
+              Swal.fire({
+                title: 'Something went wrong',
+                icon: 'error',
+              });
+              console.error('Error updating file:', error);
+            }
+          } else {
+            Swal.fire({
+              title: 'Please select a file for updating',
+              icon: 'warning',
+            });
+          }
+        },
+      });
+    } catch (error) {
+      // Handle errors
+      console.error("Error updating file:", error);
+    }
+  };
+  
+
   const updateFileList = async () => {
     try {
-      // let BaseUrl=`https://filemanagement-ikvm.onrender.com`
+     
       // let BaseUrl=`http://localhost:3001`
 
       // this is latest Deploye Link which is below
       let BaseUrl = `https://filedrive-management.onrender.com`;
-      // Use the appropriate API endpoint based on user role
+      // Using the appropriate API endpoint based on user role
       const apiEndpoint =
         userRole === "admin"
           ? `${BaseUrl}/file/files`
@@ -196,16 +274,17 @@ const FileUpload = () => {
                 </div>
               </td>}
               <td>
-                <button>
+                <button className="downloadBtn">
                   <div>
                     <a href={file.filename} download={file.filename}>
-                      Download Image
+                      Download 
                     </a>
                   </div>
                 </button>
-                <button onClick={() => handleDelete(file.filename)}>
+                <button className="deleteBtn" onClick={() => handleDelete(file.filename)}>
                   Delete
                 </button>
+                <button className="updateBtn" onClick={() => handleUpdate(file.filename)}>Update File</button>
               </td>
             </tr>
           ))}

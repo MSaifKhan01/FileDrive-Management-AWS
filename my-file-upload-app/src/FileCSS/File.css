@@ -14,7 +14,7 @@ h2 {
 }
 a {
   text-decoration: none; 
-  background-color: #1d3557;
+
   color: #fff;
 }
 
@@ -79,9 +79,9 @@ width: 20%;
 td img {
   display: block;
   width: 100%;
-  margin: 0 auto; /* Center the image horizontally */
-  max-width: 100%; /* Make sure the image doesn't exceed the cell width */
-  height: auto; /* Maintain aspect ratio */
+  margin: 0 auto; 
+  max-width: 100%; 
+  height: auto; 
   max-height: 200px; 
   padding: 20%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -113,4 +113,18 @@ th {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   background-color: #caf0f8;
   }
+}
+
+.deleteBtn{
+  background-color: #e74c3c; 
+  color: #ffffff; 
+}
+.downloadBtn{
+  background-color: #2ecc71; 
+  color: #ffffff; 
+}
+
+.updateBtn{
+  background-color: #f39c12;
+  color: #ffffff; 
 }

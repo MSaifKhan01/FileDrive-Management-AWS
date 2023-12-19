@@ -71,6 +71,7 @@ List of dependencies used for this backend.
 - **POST /file/upload**: Upload a file to S3 and save metadata to MongoDB. (Authenticated)
 - **GET /file/files**: Retrieve all files ( Admin Access && Authenticated).
 - **GET /file/files/:userId**: Retrieve files for a specific user. (Authenticated)
+- **PUT /file/update/:filename**: Update a file from S3 and MongoDB. (Authenticated)
 - **DELETE /file/delete/:filename**: Delete a file from S3 and MongoDB. (Authenticated)
 
 ### Authentication
