@@ -52,7 +52,7 @@ fileRouter.post("/upload",upload.single("file"),auth, RoleBase(["user", "admin"]
 
           const formattedTime = currentTime.toLocaleString("en-IN", options);
 
-          // Add file metadata to MongoDB
+          // Adding file metadata to MongoDB
           const metadata = new Filedata({
             filename: imageurlS3,
             uploadDate: formattedTime,
@@ -62,7 +62,7 @@ fileRouter.post("/upload",upload.single("file"),auth, RoleBase(["user", "admin"]
 
           res.status(201).send("File uploaded successfully!");
 
-          // res.json({ message: 'File uploaded successfully!' });
+          
         } catch (error) {
           console.error("Error uploading file:", error);
           res.status(500).send({ error: "Error uploading file." });
@@ -92,7 +92,7 @@ fileRouter.get("/files/:userId", auth, RoleBase(["user"]), async (req, res) => {
   try {
     const userId = req.params.userId;
 
-    // Retrieve the list of uploaded files from MongoDB for a specific user
+    // getting the list of uploaded files from MongoDB for a specific user
     const files = await Filedata.find({ user: userId }).populate("user");
 
     res.status(200).send(files);
@@ -104,7 +104,7 @@ fileRouter.delete("/delete/:filename",auth,RoleBase(["user", "admin"]),async (re
     const filename = req.params.filename;
     console.log("Deleting file:", filename);
 
-    // Delete file from S3
+    //params for Delete file from S3
     const deleteParams = {
       Bucket: bucketName,
       Key: filename,
@@ -133,5 +133,49 @@ fileRouter.delete("/delete/:filename",auth,RoleBase(["user", "admin"]),async (re
     }
   }
 );
+
+
+
+
+fileRouter.put("/update/:filename", upload.single("file"), auth, RoleBase(["user", "admin"]), async (req, res) => {
+  const { file } = req;
+  const filename = req.params.filename;
+
+  // Reading the updated file from the local filesystem
+  const updatedFileContent = fs.readFileSync(file.path);
+
+  // Specifying the parameters for S3 update
+  const updateParams = {
+    Bucket: bucketName,
+    Key: filename,
+    Body: updatedFileContent,
+  };
+
+  // Updating the file on S3
+  s3.upload(updateParams, async (err, data) => {
+    if (err) {
+      console.error("Error updating file on S3:", err);
+      res.status(500).send("Internal Server Error");
+    } else {
+      console.log("File updated successfully on S3. S3 URL:", data.Location);
+      const updatedImageUrlS3 = data.Location;
+
+      try {
+        // Update file metadata in MongoDB
+        const updatedMetadata = {
+          filename: updatedImageUrlS3,
+        };
+
+        await Filedata.findOneAndUpdate({ filename: filename }, updatedMetadata);
+
+        res.status(200).send("File updated successfully!");
+      } catch (error) {
+        console.error("Error updating file:", error);
+        res.status(500).send({ error: "Error updating file." });
+      }
+    }
+  });
+});
+
 
 module.exports = { fileRouter };
